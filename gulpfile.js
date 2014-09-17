@@ -6,12 +6,12 @@ var notify = require('gulp-notify');
 gulp.task('default', ['coffee']);
 
 gulp.task('coffee', function() {
-  gulp.src('./src/*.coffee')
+  gulp.src('./src/**/*.coffee')
     .pipe(sourcemaps.init())
     .pipe(coffee({})).on('error', console.log)
+    .pipe(notify())
     .pipe(sourcemaps.write('./maps'))
-    .pipe(gulp.dest('./build'))
-    .pipe(notify({ message: 'coffeescript compiled sucessfully' }));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('watch', function() {

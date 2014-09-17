@@ -9,12 +9,16 @@
   "author": "Mitch R",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.8.2",
+    "express": "^4.9.0",
+    "express-params": "0.0.3",
     "pg": "^3.4.2",
     "sequelize": "^1.7.10"
   },
   "devDependencies": {
     "gulp": "^3.8.8",
     "gulp-coffee": "^2.2.0",
+    "gulp-notify": "^1.6.0",
     "gulp-sourcemaps": "^1.1.5"
   }
 }
