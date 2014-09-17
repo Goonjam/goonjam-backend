@@ -1,19 +1,22 @@
 express    = require 'express'
 app        = express()
 bodyParser = require 'body-parser'
-Sequelize  = require 'sequelize'
+db = require './models'
 
-# sequelize = new Sequelize('vagrant_goonjam', 'vagrant', 'vagrant', {
-#   host: 'localhost'
-#   dialect: 'postgres'
-# })
-
-port = process.env.PORT or 8000
+app.set 'port', process.env.PORT or 8000
 
 app.use bodyParser.urlencoded()
 app.use bodyParser.json()
 
 app.use '/api/v1', require('./routes/api')
 
-app.listen(port)
-console.log "Server running on #{port}"
+ 
+db
+  .sequelize
+  .sync({ force: true })
+  .complete (err) ->
+    if (err)
+      throw err[0]
+    else
+      app.listen(app.get('port'), ->
+        console.log 'Express server listening on port ' + app.get('port'))
