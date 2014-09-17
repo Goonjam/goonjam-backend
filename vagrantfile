@@ -13,6 +13,11 @@ sudo apt-get -y install tmux
 sudo apt-get -y install python-dev python-pip
 
 sudo pip install virtualenvwrapper
+sudo add-apt-repository -y ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get -y install nodejs
+sudo apt-get -y install npm
+npm install -g coffee-script
 
 cd /home/vagrant/
 rm /home/vagrant/.config
@@ -26,7 +31,7 @@ echo "source /home/vagrant/.config" >> /home/vagrant/.bashrc
 source /home/vagrant/.config
 
 su postgres -c "createdb '$APP_DATABASE'"
-echo "CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASS';" | sudo -u postgres psql
+echo "CREATE USER $APP_DB_USER WITH PASSWORD '$APP_DB_PASSWORD';" | sudo -u postgres psql
 echo "GRANT ALL PRIVILEGES ON DATABASE $APP_DATABASE to $APP_DB_USER;" | sudo -u postgres psql
 
 sudo service postgresql restart
