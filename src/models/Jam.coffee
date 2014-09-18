@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) ->
       type: DataTypes.TEXT
       allowNull: false
     active:
-      type: DataTyles.BOOLEAN
+      type: DataTypes.BOOLEAN
       defaultValue: false
     submissions_start:
       type: DataTypes.DATE
