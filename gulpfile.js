@@ -10,7 +10,7 @@ gulp.task('coffee', function() {
   gulp.src('./src/**/*.coffee')
     .pipe(sourcemaps.init())
     .pipe(coffee({})).on('error', console.log)
-    .pipe(notify())
+    // .pipe(notify())
     .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('build'));
 });
@@ -23,6 +23,6 @@ gulp.task('watch', function() {
   gulp.watch([
     // 'src/*.coffee',
     'src/**/*.coffee'
-    ], ['clean', 'coffee']);
+    ], ['coffee']);
 });
 
