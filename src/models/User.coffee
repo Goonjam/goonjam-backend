@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) ->
         isEmail: true
     website:
       type: DataTypes.STRING
+      allowNull: true
       validate:
         isUrl: true
     about: DataTypes.TEXT
     avatar:
       type: DataTypes.STRING
+      allowNull: true
       validate:
         isUrl: true
     sa_id:
