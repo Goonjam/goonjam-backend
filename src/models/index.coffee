@@ -10,7 +10,6 @@ sequelize = new Sequelize('vagrant_goonjam', 'vagrant', 'vagrant', {
 
 db = {}
  
-console.log __dirname
 fs
   .readdirSync(__dirname)
   
