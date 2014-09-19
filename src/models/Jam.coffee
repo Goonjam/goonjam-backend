@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) ->
       type: DataTypes.DATE
     logo:
       type: DataTypes.STRING
+      allowNull: true
       validate:
         isUrl: true
   },

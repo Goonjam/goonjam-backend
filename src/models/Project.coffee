@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) ->
       allowNull: false
     website:
       type: DataTypes.STRING
+      allowNull: true
       validate:
         isUrl: true
   },
