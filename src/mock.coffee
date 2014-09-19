@@ -1,7 +1,7 @@
 async = require 'async'
 
 exports.mockDb = (db) ->
-  db.sequelize.transaction (t) -> 
+  # db.sequelize.transaction (t) -> 
     async.parallel([
       (done) ->
         db.User.bulkCreate([{
