@@ -5,10 +5,10 @@ db = require '../models'
 apiRouter = express.Router()
 params.extend apiRouter
 
-apiRouter.get '/', (req, res) ->
-  res.send('goonjam JSON api')
+# apiRouter.get '/', (req, res) ->
+#   res.send('goonjam JSON api')
 
-apiRouter.get '/users', (req, res) ->
+apiRouter.get '/', (req, res) ->
   searchString = Object.keys(req.query).reduce((accum, item) ->
     if item of db.User.rawAttributes
       accum.where[item] = req.query[item];
@@ -29,7 +29,7 @@ apiRouter.get '/users', (req, res) ->
 
 .param('id', /^\d+$/) # IDs are digits only
 
-apiRouter.get '/users/:id', (req, res) ->
+apiRouter.get '/:id', (req, res) ->
   db.User.find(+req.params.id[0])
     .success (user) ->
       res.status(200).json(user: user)

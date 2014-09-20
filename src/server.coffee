@@ -9,8 +9,7 @@ app.set 'port', process.env.PORT or 8000
 app.use bodyParser.urlencoded()
 app.use bodyParser.json()
 
-app.use '/api/v1', require('./routes/api')
-
+app.use '/api/v1/users', require('./routes/users')
  
 db
   .sequelize
