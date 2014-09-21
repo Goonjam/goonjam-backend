@@ -39,13 +39,15 @@ apiRouter.get '/:id', (req, res) ->
 apiRouter.put '/:id', (req, res) ->
   db.User.find(+req.params.id[0])
     .success (user) ->
+      if user is null then return res.status(404).end()
+      
       user.updateAttributes(req.body)
         .success ->
-          res.status(200).end()
-        .error (err) ->
-          res.status(400).end(err)
-    .error (err) ->
-      res.end(404)
+          res.status(200).json(user: user)
+        # .error (err) ->
+        #   res.status(400).end(err)
+    # .error (err) ->
+    #   res.end(404)
 
 
 module.exports = apiRouter
