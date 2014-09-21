@@ -1,6 +1,7 @@
 express    = require 'express'
 app        = express()
 bodyParser = require 'body-parser'
+passport = require 'passport'
 db = require './models'
 mock = require './mock'
 
@@ -8,8 +9,10 @@ app.set 'port', process.env.PORT or 8000
 
 app.use bodyParser.urlencoded()
 app.use bodyParser.json()
+app.use(passport.initialize());
 
 app.use '/api/v1/users', require('./routes/users')
+app.use  '/authorize', require('./routes/auth')
  
 db
   .sequelize
