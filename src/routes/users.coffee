@@ -32,6 +32,7 @@ apiRouter.get '/', (req, res) ->
 apiRouter.get '/:id', (req, res) ->
   db.User.find(+req.params.id[0])
     .success (user) ->
+      if user is null then return res.status(404).end()
       res.status(200).json(user: user)
 
 apiRouter.put '/:id', (req, res) ->
