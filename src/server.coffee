@@ -6,6 +6,7 @@ db = require './models'
 mock = require './mock'
 
 app.set 'port', process.env.PORT or 8000
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'; # fixme
 
 app.use bodyParser.urlencoded()
 app.use bodyParser.json()
