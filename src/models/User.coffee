@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define('User', {
+  User = sequelize.define('User', {
     username:
       type: DataTypes.STRING
       unique: true
@@ -31,15 +31,12 @@ module.exports = (sequelize, DataTypes) ->
       unique: 'compositeIndex'
     twitch_username: DataTypes.STRING
   },
-
   {
     underscored: true
-  },
-
-  {
     classMethods:
       associate: (models) ->
         # User.hasMany(models.Vote)
         User.hasMany(models.Project)
         User.hasMany(models.Jam, {as: 'Judging', through: 'user_judging'})
+        User.hasOne(models.Auth);
   })

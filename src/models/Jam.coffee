@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) ->
-  sequelize.define('Jam', {
+  Jam = sequelize.define('Jam', {
     title:
       type: DataTypes.STRING
       unique: true
@@ -24,12 +24,8 @@ module.exports = (sequelize, DataTypes) ->
       validate:
         isUrl: true
   },
-
   {
     underscored: true
-  },
-
-  {
     classMethods:
       associate: (models) ->
         Jam.hasMany(models.Project)

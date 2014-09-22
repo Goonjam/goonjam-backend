@@ -23,7 +23,7 @@ exports.mockDb = (db) ->
         .error (err) ->
           done(err)
 
-      (done) ->    
+      (done) ->
         db.Project.create({
           title: 'my cool game'
           description: 'its a game'

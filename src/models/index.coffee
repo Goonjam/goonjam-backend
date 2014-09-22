@@ -21,6 +21,7 @@ fs
     db[model.name] = model
  
 for own modelName of db
+  console.log 'associating', modelName
   db[modelName].associate(db) if 'associate' of db[modelName]
 
 module.exports = _.extend({
